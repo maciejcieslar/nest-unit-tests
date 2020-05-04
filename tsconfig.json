@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2019",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "paths": {
+      "@integrations/*": ["src/app/shared/integrations/*"],
+      "@core/*": ["src/app/shared/core/*"],
+      "@common/*": ["src/app/shared/common/*"],
+      "@user/*": ["src/app/domain/user/*"],
+      "@playlist/*": ["src/app/domain/playlist/*"],
+      "@track/*": ["src/app/domain/track/*"],
+      "@track-config/*": ["src/app/domain/track-config/*"]
+    },
+    "incremental": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "importHelpers": true
+  },
+  "exclude": ["node_modules", "dist"]
+}

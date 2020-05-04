@@ -1,0 +1,72 @@
+{
+  "name": "nest-unit-tests",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Maciej Cieslar",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug 0.0.0.0:9229 --watch",
+    "lint": "eslint 'src/**/*.ts' --max-warnings=0",
+    "test": "jest --passWithNoTests --bail",
+    "test:watch": "jest --watch",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
+  },
+  "dependencies": {
+    "@nestjs/common": "^7.0.9",
+    "@nestjs/core": "^7.0.9",
+    "@nestjs/platform-express": "^7.0.9",
+    "@nestjs/typeorm": "^7.0.0",
+    "dotenv": "^8.2.0",
+    "faker": "^4.1.0",
+    "pg": "^8.0.3",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "rxjs": "^6.5.5",
+    "tslib": "^1.11.1",
+    "typeorm": "^0.2.24",
+    "typeorm-naming-strategies": "^1.1.0"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^7.1.5",
+    "@nestjs/schematics": "^7.0.0",
+    "@nestjs/testing": "^7.0.9",
+    "@types/faker": "^4.1.11",
+    "@types/jest": "25.2.1",
+    "@types/node": "^13.13.4",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.9.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-tsdoc": "^0.2.4",
+    "husky": "^4.2.5",
+    "jest": "^25.5.4",
+    "lint-staged": "^10.2.2",
+    "prettier": "^2.0.5",
+    "ts-jest": "25.4.0",
+    "ts-loader": "^7.0.2",
+    "ts-node": "^8.10.1",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --cache",
+      "npm run test",
+      "prettier --write"
+    ]
+  }
+}

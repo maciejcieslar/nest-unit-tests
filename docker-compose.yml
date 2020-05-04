@@ -1,0 +1,40 @@
+version: "3.7"
+
+services:
+  nest-unit-tests-api:
+    build:
+      context: .
+      target: development
+    volumes:
+      - /usr/src/app/dist
+      - /usr/src/app/node_modules
+      - .:/usr/src/app
+    ports:
+      - ${PORT}:${PORT}
+      - 9229:9229
+    command: npm run start:dev
+    env_file:
+      - .env
+    networks:
+      - nest-unit-tests-network
+    depends_on:
+      - nest-unit-tests-postgres
+  nest-unit-tests-postgres:
+    restart: always
+    image: postgres:12
+    command: -c fsync=off -c synchronous_commit=off -c full_page_writes=off -c random_page_cost=1.0
+    networks:
+      - nest-unit-tests-network
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: username
+      POSTGRES_DB: nest-unit-tests
+      PG_DATA: /var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    volumes:
+      - nest-unit-tests-pgdata:/var/lib/postgresql/data
+networks:
+  nest-unit-tests-network:
+volumes:
+  nest-unit-tests-pgdata:
